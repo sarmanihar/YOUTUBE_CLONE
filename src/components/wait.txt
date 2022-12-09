@@ -1,0 +1,156 @@
+ <Stack direction='row' flexWrap='wrap' justifyContent='start' gap={2}>
+       {videos.map((item,idx)=>(<Box key={idx}>
+            {item.id.videoId && <VideoCard video={item}/>}
+           {item.id.channelId && <ChannelCard channelDetail={item}/>}
+       </Box>))}
+  </Stack>
+
+
+
+
+  import React from 'react'
+import {Box,Stack,Typography} from '@mui/material';
+import VideoCard from './VideoCard'
+import ChannelCard from './ChannelCard'
+const Videos = ({videos}) => {
+ console.log(videos)
+
+  return (
+   <div>hi</div>
+  )
+  
+}
+
+export default Videos
+
+
+
+
+if(videos===null)
+  return (<h1>huvh</h1>)
+  return (
+    <Stack direction='row' flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
+      {videos.map((item, idx) => (
+        <Box key={idx}>
+          {item.id.videoId && <VideoCard video={item} /> }
+          {item.id.channelId && <ChannelCard channelDetail={item} />}
+        </Box>
+      ))}
+    </Stack>
+
+
+
+
+
+
+    {/*<Card>
+      <Link to={video.videoId?`/video/${video.videoId}`:demoVideoUrl}>
+      <CardMedia image={video.snippet?.thumbnails?.high?.url} alt={video.snippet?.title} sx={{width:358,height:180}}/>
+      </Link>
+  </Card>*/}
+
+
+
+  useEffect(()=>{
+    //setVideos(null);
+    console.log(`${selectedCategory}`);
+    fetchFromApi(`search?part=snippet&q=${selectedCategory}`).then((data)=>setVideos(data.items))
+  },[selectedCategory])
+
+
+
+
+
+
+
+  {/*<Box
+    sx={{
+      boxShadow: 'none',
+      borderRadius: '20px',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: { xs: '356px', md: '320px' },
+      height: '326px',
+      margin: 'auto',
+      marginTop,
+    }}
+  >
+    <Link to={`/channel/${channelDetail?.id?.channelId}`}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff' }}>
+        <CardMedia
+          image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+          alt={channelDetail?.snippet?.title}
+          sx={{ borderRadius: '50%', height: '180px', width: '180px', mb: 2, border: '1px solid #e3e3e3' }}
+        />
+        <Typography variant="h6">
+          {channelDetail?.snippet?.title}{' '}
+          <CheckCircleIcon sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
+        </Typography>
+        {channelDetail?.statistics?.subscriberCount && (
+          <Typography sx={{ fontSize: '15px', fontWeight: 500, color: 'gray' }}>
+            {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
+          </Typography>
+        )}
+      </CardContent>
+    </Link>
+        </Box>*/}
+
+
+
+
+
+
+        <Box sx={{borerShadow:'none',borderRadius:'20px',}}>
+<Link to={`/channel/${channelDetail.snippet.channelId}`}>
+  <CardContent sx={{display:'flex',flexDirection:'column',justifyContent:'center',textAlign:'center',color:'#fff'}}>
+  <CardMedia
+          image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+          alt={channelDetail?.snippet?.title}
+          sx={{ borderRadius: '50%', height: '180px', width: '180px', mb: 2, border: '1px solid #e3e3e3' }}
+        />
+
+        <Typography variant='h6'>
+        {channelDetail?.snippet?.title}
+        <CheckCircleIcon sx={{fontSize:14,color:'gray',ml:'5px'}}/>
+        </Typography>
+  </CardContent>
+</Link>
+
+ </Box>
+
+
+
+
+
+
+
+
+
+ import React from 'react'
+import { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
+import {Paper,IconButton} from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search';
+const Searchbar=()=><div>hi</div>
+//import {  TextField, IconButton } from '@material-ui/core';
+//import {SearchIcon} from'@mui/icons-material'
+
+/*const Searchbar = () => {
+  const[searchTerm,setsearchTerm]=useState('')
+  const handleSubmit=(e)=>{
+e.preventDefalt();
+if(searchTerm){
+  Navigate(`/search/${searchTerm}`);
+  setsearchTerm('');
+}
+  }
+  return (
+  <Paper component='form' onSubmit={handleSubmit} sx={{borderRadius:20,border:'1px solid #e3e3e3',pl:2,boxShadow:'none',mr:{sm:5},}}>
+<input className='search' placeholder='Search...' value={searchTerm} onChange={(e)=>setsearchTerm(e.target.value)}/>
+<IconButton type='submit' sx={{p:'10px' ,color:'red'}}><SearchIcon /></IconButton>
+  </Paper>
+  )
+}
+*/
+export default Searchbar
